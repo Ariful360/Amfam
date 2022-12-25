@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results ignored="2" total="3" passed="1" failed="0" skipped="0">
+  <reporter-output>
+  </reporter-output>
+  <suite started-at="2022-12-24T21:42:13 EST" name="Default suite" finished-at="2022-12-24T21:42:44 EST" duration-ms="30841">
+    <groups>
+    </groups>
+    <test started-at="2022-12-24T21:42:13 EST" name="Default test" finished-at="2022-12-24T21:42:44 EST" duration-ms="30841">
+      <class name="testPages.HomePageTest">
+        <test-method is-config="true" signature="setup()[pri:0, instance:testPages.HomePageTest@2e3967ea]" started-at="2022-12-24T21:42:13 EST" name="setup" finished-at="2022-12-24T21:42:34 EST" duration-ms="20321" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setup -->
+        <test-method signature="clickInsuranceTest()[pri:0, instance:testPages.HomePageTest@2e3967ea]" started-at="2022-12-24T21:42:34 EST" name="clickInsuranceTest" finished-at="2022-12-24T21:42:44 EST" duration-ms="10381" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- clickInsuranceTest -->
+        <test-method is-config="true" signature="tear()[pri:0, instance:testPages.HomePageTest@2e3967ea]" started-at="2022-12-24T21:42:44 EST" name="tear" finished-at="2022-12-24T21:42:44 EST" duration-ms="109" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tear -->
+      </class> <!-- testPages.HomePageTest -->
+    </test> <!-- Default test -->
+  </suite> <!-- Default suite -->
+</testng-results>
