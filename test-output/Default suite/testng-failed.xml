@@ -6,7 +6,7 @@
       <class name="testPages.HomePageTest">
         <methods>
           <include name="tear"/>
-          <include name="clickInsuranceTest"/>
+          <include name="clickPageBannerTest"/>
           <include name="setup"/>
         </methods>
       </class> <!-- testPages.HomePageTest -->
