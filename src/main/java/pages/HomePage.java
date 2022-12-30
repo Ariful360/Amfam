@@ -1,10 +1,12 @@
 package pages;
 
+import org.openqa.selenium.ElementClickInterceptedException;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import org.testng.annotations.Factory;
+import static common.CommonAction.*;
 
 public class HomePage {
 	WebDriver driver;
@@ -22,6 +24,12 @@ public class HomePage {
 
 	@FindBy(className = "LoadingButton__content")
 	WebElement signIn1;
+	
+	@FindBy(css = "input#uid_56")
+	WebElement userId;
+
+	@FindBy(css = "input#uid_61")
+	WebElement password;
 
 	@FindBy(className = "SiteHeader__logo-img")
 	WebElement logo;
@@ -49,6 +57,26 @@ public class HomePage {
 
 	public void clickSignIn1() throws InterruptedException {
 		signIn1.click();
+		Thread.sleep(3000);
+	}
+	
+	public void clickUserId() throws InterruptedException {
+		clickElement(userId);
+		Thread.sleep(3000);
+	}
+	
+	public void inputTextUserId() throws InterruptedException {
+		inputText(userId, "ariful360");
+		Thread.sleep(3000);
+	}
+	
+	/*public void clickPassword() throws InterruptedException {
+		clickElement(password);
+		Thread.sleep(3000);
+		*/
+	
+	public void inputTextPassword() throws InterruptedException {
+		inputText(password, "Abc0987");
 		Thread.sleep(3000);
 	}
 
