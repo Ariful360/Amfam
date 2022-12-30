@@ -17,27 +17,27 @@ public class HomePageTest extends BaseClass {
 		homePage.clickSignIn1();
 	}
 	
-	@Test (enabled = false, priority = 6)
+	@Test (enabled = true, priority = 6)
 	public void clickLogoTest() throws InterruptedException {
 		homePage.clickLogo();
 	}
 	
-	@Test (enabled = false, priority = 5)
+	@Test (enabled = true, priority = 5)
 	public void clickInsuranceTest() throws InterruptedException {
 		homePage.clickSupport();
 	}
 	
-	@Test (enabled = false, priority = 3)
+	@Test (enabled = true, priority = 3)
 	public void clickFindAgentTest() throws InterruptedException {
 		homePage.clickFindAgent();
 	}
 	
-	@Test (enabled = false, priority = 4)
+	@Test (enabled = true, priority = 4)
 	public void clickFcontactUsTest() throws InterruptedException {
 		homePage.clickContactUs();
 	}
 	
-	@Test (enabled = false, priority = 7)
+	@Test (enabled = true, priority = 7)
 	public void clickFeedbackTest() throws InterruptedException {
 		homePage.clickFeedback();
 	}
