@@ -6,6 +6,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.testng.annotations.Factory;
+
 import static common.CommonAction.*;
 
 public class HomePage {
@@ -21,7 +23,7 @@ public class HomePage {
 
 	@FindBy(xpath = "//header/div[3]/div[1]/div[1]/div[1]/div[1]/div[1]/ul[1]/li[1]/form[1]/div[3]/div[1]/div[1]/label[1]/span[1]")
 	WebElement checkBox;
-
+	
 	@FindBy(className = "LoadingButton__content")
 	WebElement signIn1;
 	
@@ -44,11 +46,21 @@ public class HomePage {
 	WebElement contactUs;
 	@FindBy(xpath = "//a[@id='oo_tab']")
 	WebElement feedback;
+	
+	@FindBy(xpath = "//a[text()= 'User ID']")
+	WebElement forgotUserId;
+	
+	@FindBy(xpath = "//a[text()= 'password']")
+	WebElement forgotPassword;
+	
+	@FindBy(css = "a.inline-block.margin-top-20.caption")
+	WebElement returnToLoginButton;
 
 	public void clickSignIn() throws InterruptedException {
 		signIn.click();
 		Thread.sleep(3000);
 	}
+	
 
 	public void clickCheckBox() throws InterruptedException {
 		checkBox.click();
@@ -69,11 +81,6 @@ public class HomePage {
 		inputText(userId, "ariful360");
 		Thread.sleep(3000);
 	}
-	
-	/*public void clickPassword() throws InterruptedException {
-		clickElement(password);
-		Thread.sleep(3000);
-		*/
 	
 	public void inputTextPassword() throws InterruptedException {
 		inputText(password, "Abc0987");
@@ -103,6 +110,21 @@ public class HomePage {
 
 	public void clickFeedback() throws InterruptedException {
 		contactUs.click();
+		Thread.sleep(3000);
+	}
+	
+	public void forgotUserId() throws InterruptedException {
+		clickElement(forgotUserId);
+		Thread.sleep(3000);
+	}
+	
+	public void forgotPassword() throws InterruptedException {
+		clickElement(forgotPassword);
+		Thread.sleep(3000);
+	}
+	
+	public void returnToLoginButton() throws InterruptedException {
+		returnToLoginButton.click();
 		Thread.sleep(3000);
 	}
 
