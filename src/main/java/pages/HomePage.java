@@ -1,7 +1,5 @@
 package pages;
 
-import org.openqa.selenium.ElementClickInterceptedException;
-
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -42,8 +40,10 @@ public class HomePage {
 
 	@FindBy(xpath = "//a[text()= 'Contact Us']")
 	WebElement contactUs;
+	
 	@FindBy(xpath = "//a[@id='oo_tab']")
-	WebElement feedback;
+	WebElement feedback;	
+
 
 	public void clickSignIn() throws InterruptedException {
 		signIn.click();
