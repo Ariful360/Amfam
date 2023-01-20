@@ -5,16 +5,16 @@ import java.util.Properties;
 
 public class Configuration {
 	private Properties properties;
-	
+
 	public String getProperty(String key) {
 		return properties.getProperty(key);
 	}
 
-	public Configuration () {
+	public Configuration() {
 		loadProperty();
 	}
-	
-	public void loadProperty(){
+
+	public void loadProperty() {
 		properties = new Properties();
 		try {
 			properties.load(getClass().getClassLoader().getResourceAsStream("config.properties"));
@@ -22,6 +22,5 @@ public class Configuration {
 			e.printStackTrace();
 		}
 	}
-	
 
 }
