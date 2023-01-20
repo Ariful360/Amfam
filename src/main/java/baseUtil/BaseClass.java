@@ -2,13 +2,20 @@ package baseUtil;
 
 import java.time.Duration;
 
-
+import org.openqa.selenium.Dimension;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 
+import io.github.bonigarcia.wdm.WebDriverManager;
 import pages.HomePage;
 import util.Configuration;
 import static util.IConstant.*;
@@ -17,7 +24,13 @@ public class BaseClass {
 	public WebDriver driver;
 	public HomePage homePage;
 	Configuration config;
-
+	public  Actions actions;
+	protected Dimension dimension;
+	protected Select select;
+	protected JavascriptExecutor js;
+	protected WebDriverWait wait;
+	
+	
 	@BeforeMethod
 	public void setup() {
 
@@ -76,7 +89,10 @@ public class BaseClass {
 		// driver = new FirefoxDriver();
 
 		// WebDriverManager is used for most updated edgedriver()
-		// WebDriverManager.edgedriver().setup();
+		//WebDriverManager.edgedriver().setup();
+		//System.setProperty("webdriver.chrome.driver",
+				//"/Users/arifulislam/eclipse-workspace/com.amfam/Driver/msedgedriver");
+				
 		//driver = new EdgeDriver();
 
 		// In the industry: Chrome driver is used 90% time
@@ -90,24 +106,29 @@ public class BaseClass {
 		
 		//System.setProperty("WebElement.chrome.driver", System.getProperty("user.dir") + "/driver/ChromeDriver");
 		
-		System.setProperty("Webdriver.chrome.driver", System.getProperty("user.dir") +
-				"/driver/chromedriver");
+		//System.setProperty("Webdriver.chrome.driver", System.getProperty("user.dir") +
+			//	"/driver/chromedriver");
 
 		config = new Configuration();
-		driver = new ChromeDriver();
+		initDriver();
+		js = (JavascriptExecutor)driver;
+		actions = new Actions(driver);
+		select = new Select((WebElement) driver);
 		driver.manage().window().maximize();
-		driver.manage().window().fullscreen();
+		//driver.manage().window().fullscreen();
 		driver.manage().deleteAllCookies();
 		//driver.get("https://www.amfam.com/");
 		driver.get(config.getProperty((URL)));
 		//how to change String to long ----> Long.perseLong()
 		long pageLoad= Long.parseLong(config.getProperty((PAGELOAD_WAIT)));
 		long implicitly= Long.parseLong(config.getProperty((IMPLICITLY_WAIT)));
+		long explicitly= Long.parseLong(config.getProperty((EXPLICITLY_WAIT)));
 		driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(pageLoad));
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(implicitly));
-		homePage = new HomePage(driver);
+		wait = new WebDriverWait(driver, Duration.ofSeconds(explicitly));
+		initClasses();
 	}
-	/*
+	
 	private void initDriver() {
 		String browserName = config.getProperty(BROWSER);
 		
@@ -121,11 +142,24 @@ public class BaseClass {
 			driver= new FirefoxDriver();
 			break;
 
+		case EDGE:
+			System.setProperty("webdriver.edge.driver", "./driver/msedgedriver");
+			driver = new EdgeDriver();
+			break;
 		default:
+			WebDriverManager.chromedriver().setup();
+			driver = new ChromeDriver();
 			break;
 		}
 	}
-*/
+	
+	private void initClasses () {
+		homePage = new HomePage(driver);
+	}
+		
+
+	
+	
 	@AfterMethod
 	public void tear() {
 		driver.quit();

@@ -43,6 +43,9 @@ public class HomePage {
 	
 	@FindBy(xpath = "//a[@id='oo_tab']")
 	WebElement feedback;	
+	
+	@FindBy(xpath = "//a[contains(text(),'Resources')]")
+	WebElement resources;
 
 
 	public void clickSignIn() throws InterruptedException {
@@ -103,6 +106,10 @@ public class HomePage {
 
 	public void clickFeedback() throws InterruptedException {
 		contactUs.click();
+		Thread.sleep(3000);
+	}
+	public void clickResources() throws InterruptedException {
+		resources.click();
 		Thread.sleep(3000);
 	}
 
